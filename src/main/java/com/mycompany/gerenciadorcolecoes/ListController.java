@@ -7,6 +7,6 @@ public class ListController {
 
     @FXML
     private void switchToPrimary() throws IOException {
-        App.setRoot("index");
+        App.setRoot("index"); 
     }
 }
