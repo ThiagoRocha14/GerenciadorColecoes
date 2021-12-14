@@ -37,7 +37,6 @@
                 <version>0.0.4</version>
                 <configuration>
                     <mainClass>com.mycompany.gerenciadorcolecoes.App</mainClass>
-                    <executable>/usr/lib/jvm/java-11-openjdk-amd64/bin/java</executable>
                 </configuration>
                 <executions>
                     <execution>
