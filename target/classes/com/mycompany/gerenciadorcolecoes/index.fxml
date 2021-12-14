@@ -24,12 +24,6 @@
             <Insets />
          </VBox.margin>
       </Button>
-      <Button fx:id="btnUpdate" layoutX="97.0" layoutY="98.0" text="Alterar Itens" />
-      <Button fx:id="btnDel" layoutX="97.0" layoutY="121.0" text="Remover Itens">
-         <VBox.margin>
-            <Insets />
-         </VBox.margin>
-      </Button>
       <Button fx:id="btnCad" layoutX="134.0" layoutY="219.0" onAction="#switchToSecondary" text="Cadastros" />
    </children>
    <padding>

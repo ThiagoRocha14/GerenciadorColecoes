@@ -3,3 +3,4 @@ com/mycompany/gerenciadorcolecoes/App.class
 module-info.class
 com/mycompany/gerenciadorcolecoes/IndexController.class
 com/mycompany/gerenciadorcolecoes/ListController.class
+com/mycompany/gerenciadorcolecoes/AddControler.class
