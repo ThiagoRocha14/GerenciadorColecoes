@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="255.0" prefWidth="360.0" spacing="20.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.gerenciadorcolecoes.IndexController">
+<VBox alignment="CENTER" prefHeight="255.0" prefWidth="360.0" spacing="20.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.IndexController">
    <children>
       <Label alignment="CENTER" prefHeight="31.0" prefWidth="226.0" text="Gerenciador de Coleções" textAlignment="CENTER">
          <font>
@@ -19,7 +19,7 @@
          <VBox.margin>
             <Insets />
          </VBox.margin></Button>
-      <Button fx:id="btnAdicionarItens" layoutX="30.0" layoutY="75.0" text="Adicionar Itens">
+      <Button fx:id="btnAdicionarItens" layoutX="30.0" layoutY="75.0" onAction="#switchToAdd" text="Adicionar Itens">
          <VBox.margin>
             <Insets />
          </VBox.margin>

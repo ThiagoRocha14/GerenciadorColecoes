@@ -1,6 +1,6 @@
-com/mycompany/gerenciadorcolecoes/CadastrosController.class
-com/mycompany/gerenciadorcolecoes/App.class
 module-info.class
-com/mycompany/gerenciadorcolecoes/IndexController.class
-com/mycompany/gerenciadorcolecoes/ListController.class
-com/mycompany/gerenciadorcolecoes/AddControler.class
+controller/AddController.class
+controller/ListController.class
+controller/CadastrosController.class
+start/App.class
+controller/IndexController.class

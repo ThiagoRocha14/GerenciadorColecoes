@@ -1,6 +1,6 @@
-/home/aluno/NetBeansProjects/GerenciadorColecoes/src/main/java/com/mycompany/gerenciadorcolecoes/AddControler.java
-/home/aluno/NetBeansProjects/GerenciadorColecoes/src/main/java/com/mycompany/gerenciadorcolecoes/App.java
-/home/aluno/NetBeansProjects/GerenciadorColecoes/src/main/java/com/mycompany/gerenciadorcolecoes/IndexController.java
-/home/aluno/NetBeansProjects/GerenciadorColecoes/src/main/java/com/mycompany/gerenciadorcolecoes/CadastrosController.java
-/home/aluno/NetBeansProjects/GerenciadorColecoes/src/main/java/com/mycompany/gerenciadorcolecoes/ListController.java
+/home/aluno/NetBeansProjects/GerenciadorColecoes/src/main/java/controller/ListController.java
+/home/aluno/NetBeansProjects/GerenciadorColecoes/src/main/java/controller/IndexController.java
+/home/aluno/NetBeansProjects/GerenciadorColecoes/src/main/java/start/App.java
+/home/aluno/NetBeansProjects/GerenciadorColecoes/src/main/java/controller/AddController.java
 /home/aluno/NetBeansProjects/GerenciadorColecoes/src/main/java/module-info.java
+/home/aluno/NetBeansProjects/GerenciadorColecoes/src/main/java/controller/CadastrosController.java

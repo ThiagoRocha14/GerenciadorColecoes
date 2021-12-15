@@ -1,5 +1,6 @@
-package com.mycompany.gerenciadorcolecoes;
+package controller;
 
+import start.App;
 import java.io.IOException;
 import javafx.fxml.FXML;
 

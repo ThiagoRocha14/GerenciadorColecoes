@@ -1,7 +1,12 @@
-module com.mycompany.gerenciadorcolecoes {
+module start {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.base;
+    requires java.sql;
+    requires commons.io;
 
-    opens com.mycompany.gerenciadorcolecoes to javafx.fxml;
-    exports com.mycompany.gerenciadorcolecoes;
+    opens controller to javafx.fxml;
+    opens start to javafx.fxml;
+    exports controller;
+    exports start;
 }
