@@ -43,5 +43,5 @@ public class AddController {
             //ImageIO.write(image, type, new File("./fotos"));
         }
     }
-    
+   
 }

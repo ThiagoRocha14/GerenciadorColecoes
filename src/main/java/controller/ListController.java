@@ -10,4 +10,8 @@ public class ListController {
     private void switchToPrimary() throws IOException {
         App.setRoot("index"); 
     }
+    @FXML
+    private void switchToAdd() throws IOException {
+        App.setRoot("add");
+    }
 }

@@ -1,6 +1,14 @@
-module-info.class
+model/dao/StatusDaoJDBC.class
 controller/AddController.class
-controller/ListController.class
+model/dao/InterfaceDao.class
 controller/CadastrosController.class
 start/App.class
 controller/IndexController.class
+module-info.class
+model/Item.class
+model/Colecao.class
+model/dao/ConnectionFactory.class
+controller/ListController.class
+model/Status.class
+model/dao/ItemDaoJDBC.class
+model/dao/ColecaoDaoJDBC.class

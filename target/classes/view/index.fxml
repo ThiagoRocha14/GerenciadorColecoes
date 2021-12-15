@@ -15,15 +15,10 @@
          <VBox.margin>
             <Insets />
          </VBox.margin></Label>
-      <Button fx:id="botaoVisualizarItens" onAction="#switchToThird" text="Visualizar Itens">
+      <Button fx:id="botaoVisualizarItens" onAction="#switchToThird" text="Itens">
          <VBox.margin>
             <Insets />
          </VBox.margin></Button>
-      <Button fx:id="btnAdicionarItens" layoutX="30.0" layoutY="75.0" onAction="#switchToAdd" text="Adicionar Itens">
-         <VBox.margin>
-            <Insets />
-         </VBox.margin>
-      </Button>
       <Button fx:id="btnCadastros" layoutX="134.0" layoutY="219.0" onAction="#switchToSecondary" text="Cadastros" />
    </children>
    <padding>
