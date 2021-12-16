@@ -6,6 +6,7 @@
 package model.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.util.List;
 import model.Colecao;
 
@@ -24,7 +25,10 @@ public class ColecaoDaoJDBC implements InterfaceDao<Colecao> {
 
     @Override
     public void incluir(Colecao entidade) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        PreparedStatement ps = conn.prepareStatement("INSERT INTO Colecao (descricao,total_itens_colecao) VALUES (?,?)");
+        ps.setString(1, entidade.getDescricao());
+        ps.setInt(2, entidade.getTotalItensColecao());
+        ps.execute();//To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -48,7 +52,7 @@ public class ColecaoDaoJDBC implements InterfaceDao<Colecao> {
     }
 
     @Override
-    public List<Colecao> listar(Colecao entidade) throws Exception {
+    public List<Colecao> listar() throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

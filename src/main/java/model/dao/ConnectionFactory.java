@@ -16,7 +16,7 @@ import java.sql.SQLException;
 public class ConnectionFactory {
     
     public static Connection getConnection() throws SQLException {
-        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/GerenciaColecoes", "root", "");
+        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/GerenciadorColecoes", "root", "");
         return conn;
     }
     

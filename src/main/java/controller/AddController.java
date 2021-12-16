@@ -7,19 +7,30 @@ package controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
+import java.util.List;
+import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
-import org.apache.commons.io.FilenameUtils;
+import model.Status;
+import model.dao.DaoFactory;
+import model.dao.StatusDaoJDBC;
 import start.App;
 
 /**
  *
  * @author aluno
  */
-public class AddController {
+public class AddController implements Initializable{
     @FXML private ImageView imgView;
+    @FXML private ChoiceBox selectColecao;
+    @FXML private ChoiceBox selectStatus;
     
     @FXML
     private void switchToPrimary() throws IOException {
@@ -27,21 +38,32 @@ public class AddController {
     }
     
     @FXML
-    private void selecionarImagem() throws IOException {
+    private void selecionarImagem() throws IOException, Exception {
         FileChooser fileChooser = new FileChooser();
-        //FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG");
-        //FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.PNG");
-        //FileChooser.ExtensionFilter extFilterJPEG = new FileChooser.ExtensionFilter("JPEG files (*.jpeg)", "*.JPEG");
-        //fileChooser.getExtensionFilters().addAll(extFilterJPG, extFilterPNG,extFilterJPEG);
         File file = fileChooser.showOpenDialog(null);
-
         if (file != null) {
             Image image = new Image(file.toURI().toString());
-            String type = FilenameUtils.getExtension(file.toURI().toString());
             System.out.println(file.toURI().toString());
             imgView.setImage(image);
-            //ImageIO.write(image, type, new File("./fotos"));
         }
     }
     
+    @FXML
+    private void salvarItem() throws IOException {
+        App.setRoot("index"); 
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        StatusDaoJDBC dao;
+        try {
+            dao = DaoFactory.novoStatusDao();
+             List<Status> lista = dao.listar();
+        for (Status status : lista){
+            selectStatus.getItems().add(status.getDescricao());
+        }
+        } catch (Exception ex) {
+            Logger.getLogger(AddController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

@@ -1,6 +1,15 @@
 /home/aluno/NetBeansProjects/GerenciadorColecoes/src/main/java/controller/ListController.java
-/home/aluno/NetBeansProjects/GerenciadorColecoes/src/main/java/controller/IndexController.java
-/home/aluno/NetBeansProjects/GerenciadorColecoes/src/main/java/start/App.java
+/home/aluno/NetBeansProjects/GerenciadorColecoes/src/main/java/model/dao/StatusDaoJDBC.java
+/home/aluno/NetBeansProjects/GerenciadorColecoes/src/main/java/model/Item.java
+/home/aluno/NetBeansProjects/GerenciadorColecoes/src/main/java/model/Colecao.java
 /home/aluno/NetBeansProjects/GerenciadorColecoes/src/main/java/controller/AddController.java
 /home/aluno/NetBeansProjects/GerenciadorColecoes/src/main/java/module-info.java
 /home/aluno/NetBeansProjects/GerenciadorColecoes/src/main/java/controller/CadastrosController.java
+/home/aluno/NetBeansProjects/GerenciadorColecoes/src/main/java/model/dao/DaoFactory.java
+/home/aluno/NetBeansProjects/GerenciadorColecoes/src/main/java/model/dao/InterfaceDao.java
+/home/aluno/NetBeansProjects/GerenciadorColecoes/src/main/java/model/dao/ConnectionFactory.java
+/home/aluno/NetBeansProjects/GerenciadorColecoes/src/main/java/controller/IndexController.java
+/home/aluno/NetBeansProjects/GerenciadorColecoes/src/main/java/start/App.java
+/home/aluno/NetBeansProjects/GerenciadorColecoes/src/main/java/model/Status.java
+/home/aluno/NetBeansProjects/GerenciadorColecoes/src/main/java/model/dao/ColecaoDaoJDBC.java
+/home/aluno/NetBeansProjects/GerenciadorColecoes/src/main/java/model/dao/ItemDaoJDBC.java

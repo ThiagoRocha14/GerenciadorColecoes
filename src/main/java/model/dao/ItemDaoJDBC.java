@@ -48,7 +48,7 @@ public class ItemDaoJDBC implements InterfaceDao<Item> {
     }
 
     @Override
-    public List<Item> listar(Item entidade) throws Exception {
+    public List<Item> listar() throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
