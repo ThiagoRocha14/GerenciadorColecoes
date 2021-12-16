@@ -15,6 +15,7 @@ import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
@@ -33,6 +34,7 @@ public class AddController implements Initializable{
     @FXML private ImageView imgView;
     @FXML private ChoiceBox selectColecao;
     @FXML private ChoiceBox selectStatus;
+    @FXML private DatePicker pickerDataAquisicao;
     
     @FXML
     private void switchToPrimary() throws IOException {
@@ -62,14 +64,14 @@ public class AddController implements Initializable{
         try {
             dao = DaoFactory.novoStatusDao();
             dao1 = DaoFactory.novoColecaoDao();
-        List<Status> lista = dao.listar();
-        for (Status status : lista){
-            selectStatus.getItems().add(status.getDescricao());
-        }
-        List<Colecao> lista1 = dao1.listar();
-        for (Colecao colecao : lista1){
-            selectColecao.getItems().add(colecao.getDescricao());
-        }
+            List<Status> lista = dao.listar();
+            for (Status status : lista){
+                selectStatus.getItems().add(status.getDescricao());
+            }
+            List<Colecao> lista1 = dao1.listar();
+            for (Colecao colecao : lista1){
+                selectColecao.getItems().add(colecao.getDescricao());
+            }
         } catch (Exception ex) {
             Logger.getLogger(AddController.class.getName()).log(Level.SEVERE, null, ex);
         }
