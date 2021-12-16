@@ -11,7 +11,7 @@ package model;
  */
 public class Colecao {
     
-    private int id;
+    private String id;
     private String descricao;
     private int totalItensColecao;
 
@@ -23,11 +23,11 @@ public class Colecao {
     public Colecao() {
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -37,6 +37,7 @@ public class Colecao {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+        setId(descricao);
     }
 
     public int getTotalItensColecao() {

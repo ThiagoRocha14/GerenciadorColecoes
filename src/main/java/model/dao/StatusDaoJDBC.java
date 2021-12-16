@@ -27,8 +27,9 @@ public class StatusDaoJDBC implements InterfaceDao<Status> {
 
     @Override
     public void incluir(Status entidade) throws Exception {
-        PreparedStatement ps = conn.prepareStatement("INSERT INTO Status (descricao) VALUES (?)");
-        ps.setString(1, entidade.getDescricao());
+        PreparedStatement ps = conn.prepareStatement("INSERT INTO Status (id_status, descricao) VALUES (?, ?)");
+        ps.setString(1, entidade.getId());
+        ps.setString(2, entidade.getDescricao());
         ps.execute();
     }
 
@@ -59,7 +60,6 @@ public class StatusDaoJDBC implements InterfaceDao<Status> {
         List<Status> lista = new ArrayList();
         while (rs.next()){
            Status s = new Status();
-           s.setId(rs.getInt("id_status"));
            s.setDescricao(rs.getString("descricao"));
            lista.add(s);
         }

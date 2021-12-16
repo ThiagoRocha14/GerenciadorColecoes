@@ -6,6 +6,7 @@
 package model.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.util.List;
 import model.Item;
 
@@ -24,7 +25,12 @@ public class ItemDaoJDBC implements InterfaceDao<Item> {
 
     @Override
     public void incluir(Item entidade) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        PreparedStatement ps = conn.prepareStatement("INSERT INTO Item (caminho_foto, status, colecao) VALUES (?, ?, ?)");
+        ps.setString(1, entidade.getCaminhoFoto());
+        ps.setString(2, entidade.getStatus().toString());
+        ps.setString(3, entidade.getColecao().toString());
+        //ps.setString(4,  entidade.getDataAquisicao().toString());
+        ps.execute();
     }
 
     @Override

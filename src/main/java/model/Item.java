@@ -18,17 +18,15 @@ public class Item {
     private int id;
     private String descricao;
     private String caminhoFoto;
-    private Status status;
-    private Colecao colecao;
-    private Date dataLancamento;
+    private String status;
+    private String colecao;
     private Date dataAquisicao;
 
-    public Item(String descricao, String caminhoFoto, Status status, Colecao colecao, Date dataLancamento, Date dataAquisicao) {
+    public Item(String descricao, String caminhoFoto, String status, String colecao, Date dataLancamento, Date dataAquisicao) {
         this.descricao = descricao;
         this.caminhoFoto = caminhoFoto;
         this.status = status;
         this.colecao = colecao;
-        this.dataLancamento = dataLancamento;
         this.dataAquisicao = dataAquisicao;
     }
 
@@ -59,28 +57,20 @@ public class Item {
         this.caminhoFoto = caminhoFoto;
     }
 
-    public Status getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Status status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
-    public Colecao getColecao() {
+    public String getColecao() {
         return colecao;
     }
 
-    public void setColecao(Colecao colecao) {
+    public void setColecao(String colecao) {
         this.colecao = colecao;
-    }
-
-    public Date getDataLancamento() {
-        return dataLancamento;
-    }
-
-    public void setDataLancamento(Date dataLancamento) {
-        this.dataLancamento = dataLancamento;
     }
 
     public Date getDataAquisicao() {

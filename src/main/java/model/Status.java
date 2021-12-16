@@ -11,7 +11,7 @@ package model;
  */
 public class Status {
     
-    private int id;
+    private String id;
     private String descricao;
 
     public Status() {
@@ -21,11 +21,11 @@ public class Status {
         this.descricao = descricao;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -35,5 +35,6 @@ public class Status {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+        setId(descricao);
     }
 }
