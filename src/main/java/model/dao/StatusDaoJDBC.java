@@ -6,6 +6,9 @@
 package model.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 import model.Status;
 
@@ -17,14 +20,16 @@ public class StatusDaoJDBC implements InterfaceDao<Status> {
     
     private Connection conn;
     
-    public void StatusDaoJDBC() throws Exception {
+    public StatusDaoJDBC() throws Exception {
         this.conn = ConnectionFactory.getConnection();
         
     }
 
     @Override
     public void incluir(Status entidade) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        PreparedStatement ps = conn.prepareStatement("INSERT INTO Status (descricao) VALUES (?)");
+        ps.setString(1, entidade.getDescricao());
+        ps.execute();
     }
 
     @Override
@@ -48,8 +53,17 @@ public class StatusDaoJDBC implements InterfaceDao<Status> {
     }
 
     @Override
-    public List<Status> listar(Status entidade) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Status> listar() throws Exception {
+        PreparedStatement ps = conn.prepareStatement("SELECT * FROM Status");
+        ResultSet rs = ps.executeQuery();
+        List<Status> lista = new ArrayList();
+        while (rs.next()){
+           Status s = new Status();
+           s.setId(rs.getInt("id_status"));
+           s.setDescricao(rs.getString("descricao"));
+           lista.add(s);
+        }
+        return lista;
     }
     
 }

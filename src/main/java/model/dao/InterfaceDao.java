@@ -23,6 +23,6 @@ public interface InterfaceDao<T> {
     
     public abstract void pesquisarPorString(String termo) throws Exception;
     
-    public abstract List<T> listar(T entidade) throws Exception;
+    public abstract List<T> listar() throws Exception;
     
 }

@@ -5,6 +5,7 @@
 /home/aluno/NetBeansProjects/GerenciadorColecoes/src/main/java/controller/AddController.java
 /home/aluno/NetBeansProjects/GerenciadorColecoes/src/main/java/module-info.java
 /home/aluno/NetBeansProjects/GerenciadorColecoes/src/main/java/controller/CadastrosController.java
+/home/aluno/NetBeansProjects/GerenciadorColecoes/src/main/java/model/dao/DaoFactory.java
 /home/aluno/NetBeansProjects/GerenciadorColecoes/src/main/java/model/dao/InterfaceDao.java
 /home/aluno/NetBeansProjects/GerenciadorColecoes/src/main/java/model/dao/ConnectionFactory.java
 /home/aluno/NetBeansProjects/GerenciadorColecoes/src/main/java/controller/IndexController.java

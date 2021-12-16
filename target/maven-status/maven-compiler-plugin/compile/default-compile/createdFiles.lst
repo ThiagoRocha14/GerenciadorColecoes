@@ -1,5 +1,6 @@
 model/dao/StatusDaoJDBC.class
 controller/AddController.class
+model/dao/DaoFactory.class
 model/dao/InterfaceDao.class
 controller/CadastrosController.class
 start/App.class
