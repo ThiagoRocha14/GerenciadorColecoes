@@ -29,8 +29,7 @@
           <TableColumn fx:id="colunaDescricao" prefWidth="168.0" text="Descricao" />
             <TableColumn fx:id="colunaStatus" prefWidth="77.0" text="Status" />
             <TableColumn fx:id="colunaColecao" prefWidth="78.0" text="Colecao" />
-            <TableColumn fx:id="colunaDataLancamento" prefWidth="160.0" text="Data de Lancamento" />
-            <TableColumn fx:id="colunaDataAquisicao" prefWidth="143.0" text="Data de Aquisicao" />
+            <TableColumn fx:id="colunaDataAquisicao" prefWidth="143.0" text="DataAquisicao" />
         </columns>
       </TableView>
    </children>

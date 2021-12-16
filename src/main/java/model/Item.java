@@ -5,6 +5,7 @@
  */
 package model;
 
+import java.time.LocalDate;
 import java.util.Date;
 import model.Colecao;
 import model.Status;
@@ -20,9 +21,9 @@ public class Item {
     private String caminhoFoto;
     private String status;
     private String colecao;
-    private Date dataAquisicao;
+    private LocalDate dataAquisicao;
 
-    public Item(String descricao, String caminhoFoto, String status, String colecao, Date dataLancamento, Date dataAquisicao) {
+    public Item(String descricao, String caminhoFoto, String status, String colecao, LocalDate dataAquisicao) {
         this.descricao = descricao;
         this.caminhoFoto = caminhoFoto;
         this.status = status;
@@ -73,11 +74,11 @@ public class Item {
         this.colecao = colecao;
     }
 
-    public Date getDataAquisicao() {
+    public LocalDate getDataAquisicao() {
         return dataAquisicao;
     }
 
-    public void setDataAquisicao(Date dataAquisicao) {
+    public void setDataAquisicao(LocalDate dataAquisicao) {
         this.dataAquisicao = dataAquisicao;
     }
 }

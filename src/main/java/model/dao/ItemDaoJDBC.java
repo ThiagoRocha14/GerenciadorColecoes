@@ -7,6 +7,8 @@ package model.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 import model.Item;
 
@@ -25,11 +27,12 @@ public class ItemDaoJDBC implements InterfaceDao<Item> {
 
     @Override
     public void incluir(Item entidade) throws Exception {
-        PreparedStatement ps = conn.prepareStatement("INSERT INTO Item (caminho_foto, status, colecao) VALUES (?, ?, ?)");
+        PreparedStatement ps = conn.prepareStatement("INSERT INTO Item (caminho_foto, status, colecao, data_aquisicao, descricao) VALUES (?, ?, ?, ?, ?)");
         ps.setString(1, entidade.getCaminhoFoto());
         ps.setString(2, entidade.getStatus().toString());
         ps.setString(3, entidade.getColecao().toString());
-        //ps.setString(4,  entidade.getDataAquisicao().toString());
+        ps.setString(4,  entidade.getDataAquisicao().toString());
+        ps.setString(5, entidade.getDescricao());
         ps.execute();
     }
 
@@ -55,7 +58,20 @@ public class ItemDaoJDBC implements InterfaceDao<Item> {
 
     @Override
     public List<Item> listar() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        PreparedStatement ps = conn.prepareStatement("SELECT * FROM Item");
+        ResultSet rs = ps.executeQuery();
+        List<Item> lista = new ArrayList();
+        while (rs.next()) {
+            Item item = new Item();
+            item.setId(rs.getInt("id_item"));
+            item.setCaminhoFoto(rs.getString("caminho_foto"));
+            item.setColecao(rs.getString("colecao"));
+            item.setStatus(rs.getString("status"));
+            item.setDataAquisicao(rs.getDate("data_aquisicao").toLocalDate());
+            item.setDescricao(rs.getString("descricao"));
+            lista.add(item);            
+        }
+        return lista;
     }
     
 }

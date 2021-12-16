@@ -29,8 +29,8 @@ public class CadastrosController {
         inputDescricaoStatus.setText("");
         status.setDescricao(descricao);
         try{
-        StatusDaoJDBC dao = DaoFactory.novoStatusDao();
-        dao.incluir(status);
+            StatusDaoJDBC dao = DaoFactory.novoStatusDao();
+            dao.incluir(status);
         }catch (Exception EX){
             System.out.println(EX.getMessage());
         }
@@ -46,8 +46,8 @@ public class CadastrosController {
         colecao.setDescricao(descricao);
         colecao.setTotalItensColecao(total);
         try{
-        ColecaoDaoJDBC dao = DaoFactory.novoColecaoDao();
-        dao.incluir(colecao);
+            ColecaoDaoJDBC dao = DaoFactory.novoColecaoDao();
+            dao.incluir(colecao);
         }catch (Exception EX){
             System.out.println(EX.getMessage());
         }
