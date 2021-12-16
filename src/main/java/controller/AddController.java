@@ -18,7 +18,9 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
+import model.Colecao;
 import model.Status;
+import model.dao.ColecaoDaoJDBC;
 import model.dao.DaoFactory;
 import model.dao.StatusDaoJDBC;
 import start.App;
@@ -56,11 +58,17 @@ public class AddController implements Initializable{
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         StatusDaoJDBC dao;
+        ColecaoDaoJDBC dao1;
         try {
             dao = DaoFactory.novoStatusDao();
-             List<Status> lista = dao.listar();
+            dao1 = DaoFactory.novoColecaoDao();
+        List<Status> lista = dao.listar();
         for (Status status : lista){
             selectStatus.getItems().add(status.getDescricao());
+        }
+        List<Colecao> lista1 = dao1.listar();
+        for (Colecao colecao : lista1){
+            selectColecao.getItems().add(colecao.getDescricao());
         }
         } catch (Exception ex) {
             Logger.getLogger(AddController.class.getName()).log(Level.SEVERE, null, ex);

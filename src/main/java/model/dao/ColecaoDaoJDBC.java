@@ -7,6 +7,8 @@ package model.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 import model.Colecao;
 
@@ -53,7 +55,17 @@ public class ColecaoDaoJDBC implements InterfaceDao<Colecao> {
 
     @Override
     public List<Colecao> listar() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        PreparedStatement ps = conn.prepareStatement("SELECT * FROM Colecao");
+        ResultSet rs = ps.executeQuery();
+        List<Colecao> lista = new ArrayList();
+        while (rs.next()){
+           Colecao c = new Colecao();
+           c.setId(rs.getInt("id_colecao"));
+           c.setDescricao(rs.getString("descricao"));
+           c.setTotalItensColecao(rs.getInt("total_itens_colecao"));
+           lista.add(c);
+        }
+        return lista;
     }
     
 }
