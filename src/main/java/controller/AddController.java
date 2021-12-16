@@ -12,16 +12,20 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import model.Colecao;
+import model.Item;
 import model.Status;
 import model.dao.ColecaoDaoJDBC;
 import model.dao.DaoFactory;
+import model.dao.ItemDaoJDBC;
 import model.dao.StatusDaoJDBC;
 import start.App;
 
@@ -33,6 +37,7 @@ public class AddController implements Initializable{
     @FXML private ImageView imgView;
     @FXML private ChoiceBox selectColecao;
     @FXML private ChoiceBox selectStatus;
+    @FXML private TextField txtDescAdd;
     
     @FXML
     private void switchToPrimary() throws IOException {
@@ -72,6 +77,25 @@ public class AddController implements Initializable{
         }
         } catch (Exception ex) {
             Logger.getLogger(AddController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    @FXML
+    private void cadastrarItem(ActionEvent event) throws Exception {
+        Item item = new Item();
+        String path = imgView.getImage().getUrl();
+        String colecaoDescricao = selectColecao.getValue().toString();
+        String statusDescricao = selectStatus.getValue().toString();
+        String descricaoItem = txtDescAdd.toString();
+        item.setCaminhoFoto(path);
+        item.setColecao(colecaoDescricao);
+        item.setDescricao(descricaoItem);
+        item.setStatus(statusDescricao);
+        try {
+            ItemDaoJDBC daoItem = DaoFactory.novoItemDao();
+            daoItem.incluir(item);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
 }
