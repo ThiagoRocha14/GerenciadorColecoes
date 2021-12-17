@@ -7,6 +7,8 @@ package model;
 
 import java.time.LocalDate;
 import java.util.Date;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import model.Colecao;
 import model.Status;
 
@@ -21,6 +23,7 @@ public class Item {
     private String caminhoFoto;
     private String status;
     private String colecao;
+    private ImageView Foto;
     private LocalDate dataAquisicao;
     private int totalPorStatus;
 
@@ -89,5 +92,13 @@ public class Item {
 
     public void setTotalPorStatus(int totalPorStatus) {
         this.totalPorStatus = totalPorStatus;
+    }
+
+    public ImageView getFoto() {
+        return Foto;
+    }
+
+    public void setFoto(ImageView Foto) {
+        this.Foto = Foto;
     }
 }

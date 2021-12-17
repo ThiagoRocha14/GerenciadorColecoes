@@ -4,6 +4,8 @@ import start.App;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -20,6 +22,7 @@ import model.dao.ItemDaoJDBC;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.TableCell;
 import javafx.scene.image.ImageView;
 
 public class ListController implements Initializable {
@@ -31,6 +34,7 @@ public class ListController implements Initializable {
     @FXML private TableColumn<Item,String> colunaColecao;
     @FXML private TableColumn<Item,LocalDate> colunaDataAquisicao;
     
+    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     private List<Item> listaItem;
     private ObservableList<Item> observableListItem;
     
@@ -85,12 +89,22 @@ public class ListController implements Initializable {
         //Você pode testar que a quantidade de itens que você colocar vai aparecer na tabela clicável, mas não visível
         //A gente pode usar uma propriedade Callback tbm, tem sobre no StackOverflow
         
-        colunaImagem.setCellValueFactory(new PropertyValueFactory<>("Imagem"));
+        colunaImagem.setCellValueFactory(new PropertyValueFactory<>("Foto"));
         colunaDescricao.setCellValueFactory(new PropertyValueFactory<>("Descricao"));
         colunaStatus.setCellValueFactory(new PropertyValueFactory<>("Status"));
         colunaColecao.setCellValueFactory(new PropertyValueFactory<>("Colecao"));
         colunaDataAquisicao.setCellValueFactory(new PropertyValueFactory<>("DataAquisicao"));
-        
+        colunaDataAquisicao.setCellFactory(col -> new TableCell<Item, LocalDate>() {
+            @Override
+            protected void updateItem(LocalDate item, boolean empty) {
+
+                super.updateItem(item, empty);
+                if (empty)
+                    setText(null);
+                else
+                    setText(String.format(item.format(formatter)));
+            }
+        });
         try {
             ItemDaoJDBC dao = DaoFactory.novoItemDao();
             listaItem = dao.listar();

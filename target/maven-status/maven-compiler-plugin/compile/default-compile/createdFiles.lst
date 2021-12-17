@@ -5,6 +5,7 @@ model/dao/DaoFactory.class
 model/dao/InterfaceDao.class
 controller/CadastrosController.class
 start/App.class
+controller/ListController$1.class
 controller/IndexController.class
 module-info.class
 model/Item.class

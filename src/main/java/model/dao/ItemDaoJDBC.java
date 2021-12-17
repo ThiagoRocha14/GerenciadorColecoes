@@ -10,6 +10,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import model.Item;
 import model.Status;
 
@@ -74,6 +76,10 @@ public class ItemDaoJDBC implements InterfaceDao<Item> {
         while (rs.next()) {
             Item item = new Item();
             item.setId(rs.getInt("id_item"));
+            ImageView imgview = new ImageView(new Image(rs.getString("caminho_foto")));
+            imgview.setFitHeight(60);
+            imgview.setPreserveRatio(true);
+            item.setFoto(imgview);
             item.setCaminhoFoto(rs.getString("caminho_foto"));
             item.setColecao(rs.getString("colecao"));
             item.setStatus(rs.getString("status"));
