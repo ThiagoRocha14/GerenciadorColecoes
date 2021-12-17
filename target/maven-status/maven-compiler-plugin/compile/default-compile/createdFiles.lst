@@ -1,3 +1,4 @@
+controller/EstatisticasController.class
 model/dao/StatusDaoJDBC.class
 controller/AddController.class
 model/dao/DaoFactory.class

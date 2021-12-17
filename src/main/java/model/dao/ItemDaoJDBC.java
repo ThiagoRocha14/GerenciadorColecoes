@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import model.Item;
+import model.Status;
 
 /**
  *
@@ -69,6 +70,66 @@ public class ItemDaoJDBC implements InterfaceDao<Item> {
             item.setStatus(rs.getString("status"));
             item.setDataAquisicao(rs.getDate("data_aquisicao").toLocalDate());
             item.setDescricao(rs.getString("descricao"));
+            lista.add(item);            
+        }
+        return lista;
+    }
+    
+    public List<Item> listarFiltroItem() throws Exception {
+        PreparedStatement ps = conn.prepareStatement("SELECT id_item, descricao, status, colecao FROM Item ORDER BY colecao asc");
+        ResultSet rs = ps.executeQuery();
+        List<Item> lista = new ArrayList();
+        while (rs.next()) {
+            Item item = new Item();
+            item.setId(rs.getInt("id_item"));
+            item.setColecao(rs.getString("colecao"));
+            item.setStatus(rs.getString("status"));
+            item.setDescricao(rs.getString("descricao"));
+            lista.add(item);            
+        }
+        return lista;
+    }
+    
+    public List<Item> listarFiltroItem(String colecao) throws Exception {
+        PreparedStatement ps = conn.prepareStatement("SELECT id_item, descricao, status, colecao FROM Item where colecao = ? ORDER BY colecao asc");
+        ps.setString(1, colecao);
+        ResultSet rs = ps.executeQuery();
+        List<Item> lista = new ArrayList();
+        while (rs.next()) {
+            Item item = new Item();
+            item.setId(rs.getInt("id_item"));
+            item.setColecao(rs.getString("colecao"));
+            item.setStatus(rs.getString("status"));
+            item.setDescricao(rs.getString("descricao"));
+            lista.add(item);            
+        }
+        return lista;
+    }
+
+    public List<Item> listarFiltroStatus() throws Exception {
+        PreparedStatement ps = conn.prepareStatement("SELECT COUNT(status) as totalStatus, status FROM Item GROUP BY status");
+        ResultSet rs = ps.executeQuery();
+        List<Item> lista = new ArrayList();
+        while (rs.next()) {
+            Item item = new Item();
+            item.setStatus(rs.getString("status"));
+            item.setTotalPorStatus(rs.getInt("totalStatus"));
+            item.setColecao("Coleção não filtrada");
+            lista.add(item);            
+        }
+        return lista;
+    }
+
+    public List<Item> listarFiltroStatus(String colecao) throws Exception {
+        PreparedStatement ps = conn.prepareStatement("SELECT COUNT(status) as totalStatus, status, colecao FROM Item where colecao = ? GROUP BY status");
+        ps.setString(1, colecao);
+        ResultSet rs = ps.executeQuery();
+        List<Item> lista = new ArrayList();
+        while (rs.next()) {
+            Item item = new Item();
+            item.setColecao(rs.getString("colecao"));
+            item.setStatus(rs.getString("status"));
+            item.setTotalPorStatus(rs.getInt("totalStatus"));
             lista.add(item);            
         }
         return lista;

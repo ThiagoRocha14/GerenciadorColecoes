@@ -37,4 +37,4 @@ public class Status {
         this.descricao = descricao;
         setId(descricao);
     }
-}
+    }

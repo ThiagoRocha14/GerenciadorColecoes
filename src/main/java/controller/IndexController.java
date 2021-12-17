@@ -14,4 +14,8 @@ public class IndexController {
     private void switchToThird() throws IOException {
         App.setRoot("list");
     }
+    @FXML
+    private void switchToEstatistica() throws IOException {
+        App.setRoot("estatisticas");
+    }
 }

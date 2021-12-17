@@ -22,6 +22,7 @@ public class Item {
     private String status;
     private String colecao;
     private LocalDate dataAquisicao;
+    private int totalPorStatus;
 
     public Item(String descricao, String caminhoFoto, String status, String colecao, LocalDate dataAquisicao) {
         this.descricao = descricao;
@@ -80,5 +81,13 @@ public class Item {
 
     public void setDataAquisicao(LocalDate dataAquisicao) {
         this.dataAquisicao = dataAquisicao;
+    }
+
+    public int getTotalPorStatus() {
+        return totalPorStatus;
+    }
+
+    public void setTotalPorStatus(int totalPorStatus) {
+        this.totalPorStatus = totalPorStatus;
     }
 }

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EstatisticasController">
+   <children>
+      <Button layoutX="490.0" layoutY="28.0" mnemonicParsing="false" onAction="#filtrarItens" text="Filtrar" AnchorPane.topAnchor="20.0" />
+      <ChoiceBox fx:id="selectColecao" layoutX="340.0" layoutY="28.0" prefWidth="150.0" AnchorPane.topAnchor="20.0" />
+      <Label layoutX="351.0" layoutY="14.0" text="Selecione a coleção" AnchorPane.topAnchor="5.0" />
+      <Button layoutX="36.0" layoutY="28.0" mnemonicParsing="false" onAction="#switchToPrimary" text="Voltar" AnchorPane.topAnchor="20.0" />
+      <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+        <tabs>
+          <Tab text="Filtro por item">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="tableEstatisticaItem" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
+                          <columns>
+                            <TableColumn fx:id="itemItem" prefWidth="200.0" text="Item" />
+                            <TableColumn fx:id="statusItem" prefWidth="164.0" text="Status" />
+                              <TableColumn fx:id="colecaoItem" prefWidth="207.0" text="Coleção" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Filtro por status">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="tableEstatisticaStatus" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
+                           <columns>
+                              <TableColumn fx:id="statusStatus" prefWidth="158.0" text="Status" />
+                              <TableColumn fx:id="totalPorStatus" prefWidth="187.0" text="Total de itens" />
+                              <TableColumn fx:id="colecaoStatus" prefWidth="226.0" text="Coleção" />
+                           </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
