@@ -13,8 +13,8 @@
       <ToolBar prefHeight="40.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
          <items>
             <Button fx:id="btnAdicionarItens" onAction="#switchToAdd" text="Adicionar Itens" />
-            <Button fx:id="btnAdicionarItens1" layoutX="10.0" layoutY="11.0" onAction="#switchToAdd" text="Editar" />
-            <Button fx:id="btnAdicionarItens11" layoutX="130.0" layoutY="11.0" onAction="#switchToAdd" text="Excluir" />
+            <Button fx:id="btnAdicionarItens1" layoutX="10.0" layoutY="11.0" onAction="#btnEditar" text="Editar" />
+            <Button fx:id="btnAdicionarItens11" layoutX="130.0" layoutY="11.0" onAction="#btnExcluir" text="Excluir" />
             <Button fx:id="btnVoltar" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#switchToPrimary" text="Voltar" />
          </items>
       </ToolBar>

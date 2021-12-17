@@ -56,7 +56,6 @@ public class AddController implements Initializable{
         File file = fileChooser.showOpenDialog(null);
         if (file != null) {
             Image image = new Image(file.toURI().toString());
-            System.out.println(file.toURI().toString());
             imgView.setImage(image);
         }
     }
@@ -66,6 +65,8 @@ public class AddController implements Initializable{
         App.setRoot("index"); 
     }
 
+    private static Item itemSelecionado;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         StatusDaoJDBC dao;
@@ -84,6 +85,14 @@ public class AddController implements Initializable{
         } catch (Exception ex) {
             Logger.getLogger(AddController.class.getName()).log(Level.SEVERE, null, ex);
         }
+        if(itemSelecionado!=null){
+            txtDescAdd.setText(itemSelecionado.getDescricao());
+            Image image = new Image(itemSelecionado.getCaminhoFoto());
+            imgView.setImage(image);
+            pickerDataAquisicao.setValue(itemSelecionado.getDataAquisicao());
+            selectStatus.setValue(itemSelecionado.getStatus());
+            selectColecao.setValue(itemSelecionado.getColecao());
+        } 
     }
     
     @FXML
@@ -101,10 +110,23 @@ public class AddController implements Initializable{
         item.setDataAquisicao(dataAquisicao);
         try {
             ItemDaoJDBC daoItem = DaoFactory.novoItemDao();
-            daoItem.incluir(item);
+            if(itemSelecionado==null){
+                daoItem.incluir(item);
+            }else{
+                item.setId(itemSelecionado.getId());
+                daoItem.editar(item);
+                itemSelecionado = null;
+            }            
             App.setRoot("list");
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+    }
+    public static Item getItemSelecionado() {
+        return itemSelecionado;
+    }
+
+    public static void setItemSelecionado(Item itemSelecionado) {
+        AddController.itemSelecionado = itemSelecionado;
     }
 }

@@ -29,21 +29,30 @@ public class ItemDaoJDBC implements InterfaceDao<Item> {
     public void incluir(Item entidade) throws Exception {
         PreparedStatement ps = conn.prepareStatement("INSERT INTO Item (caminho_foto, status, colecao, data_aquisicao, descricao) VALUES (?, ?, ?, ?, ?)");
         ps.setString(1, entidade.getCaminhoFoto());
-        ps.setString(2, entidade.getStatus().toString());
-        ps.setString(3, entidade.getColecao().toString());
-        ps.setString(4,  entidade.getDataAquisicao().toString());
+        ps.setString(2, entidade.getStatus());
+        ps.setString(3, entidade.getColecao());
+        ps.setString(4, entidade.getDataAquisicao().toString());
         ps.setString(5, entidade.getDescricao());
         ps.execute();
     }
 
     @Override
     public void editar(Item entidade) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        PreparedStatement ps = conn.prepareStatement("UPDATE Item SET caminho_foto = ?, status = ?, colecao = ?, data_aquisicao = ?, descricao = ? WHERE id_item = ?");
+        ps.setString(1, entidade.getCaminhoFoto());
+        ps.setString(2, entidade.getStatus());
+        ps.setString(3, entidade.getColecao());
+        ps.setString(4, entidade.getDataAquisicao().toString());
+        ps.setString(5, entidade.getDescricao());
+        ps.setInt   (6, entidade.getId());
+        ps.execute();
     }
 
     @Override
     public void excluir(Item entidade) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        PreparedStatement ps = conn.prepareStatement("DELETE FROM Item  WHERE id_item = ?");
+        ps.setInt(1, entidade.getId());
+        ps.execute();
     }
 
     @Override
