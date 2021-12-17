@@ -16,10 +16,8 @@ import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
-import model.Item;
-import model.dao.DaoFactory;
-import model.dao.ItemDaoJDBC;
 import javafx.scene.control.TextField;
 import javafx.scene.control.DatePicker;
 import javafx.scene.image.Image;
@@ -99,9 +97,60 @@ public class AddController implements Initializable{
     private void cadastrarItem(ActionEvent event) throws Exception {
         Item item = new Item();
         String path = imgView.getImage().getUrl();
+        
+        String descricaoItem = txtDescAdd.getText();
+
+        if(selectColecao.getValue() == null) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aviso");
+            alert.setContentText("O campo Coleção é obrigatório");
+            alert.showAndWait();
+            return;
+        }
+
+        if(selectStatus.getValue() == null) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aviso");
+            alert.setContentText("O campo Status é obrigatório");
+            alert.showAndWait();
+            return;
+        } 
+
         String colecaoDescricao = selectColecao.getValue().toString();
         String statusDescricao = selectStatus.getValue().toString();
-        String descricaoItem = txtDescAdd.getText();
+        
+        if(colecaoDescricao.equals("")) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aviso");
+            alert.setContentText("O campo Coleção é obrigatório");
+            alert.showAndWait();
+            return;
+        }
+        
+        if(statusDescricao.equals("")) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aviso");
+            alert.setContentText("O campo Status é obrigatório");
+            alert.showAndWait();
+            return;
+        }
+        
+        if(descricaoItem.equals("")) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aviso");
+            alert.setContentText("O campo Descrição é obrigatório");
+            alert.showAndWait();
+            return;
+        }
+        
+        if(pickerDataAquisicao.getValue() == null) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aviso");
+            alert.setContentText("O campo Data aquisição é obrigatório");
+            alert.showAndWait();
+            return;
+        }        
+        
         LocalDate dataAquisicao = pickerDataAquisicao.getValue();
         item.setCaminhoFoto(path);
         item.setColecao(colecaoDescricao);
