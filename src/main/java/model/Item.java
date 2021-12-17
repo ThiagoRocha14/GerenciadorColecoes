@@ -26,6 +26,7 @@ public class Item {
     private ImageView Foto;
     private LocalDate dataAquisicao;
     private int totalPorStatus;
+    private float porcentagemStatus;
 
     public Item(String descricao, String caminhoFoto, String status, String colecao, LocalDate dataAquisicao) {
         this.descricao = descricao;
@@ -101,4 +102,14 @@ public class Item {
     public void setFoto(ImageView Foto) {
         this.Foto = Foto;
     }
+
+    public float getPorcentagemStatus() {
+        return porcentagemStatus;
+    }
+
+    public void setPorcentagemStatus(float porcentagemStatus) {
+        this.porcentagemStatus = porcentagemStatus;
+    }
+    
+    
 }

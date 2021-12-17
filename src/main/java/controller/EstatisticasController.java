@@ -47,6 +47,7 @@ public class EstatisticasController implements Initializable {
         @FXML private TableColumn<Status,String> statusStatus;
         @FXML private TableColumn<Status,Number> totalPorStatus;
         @FXML private TableColumn<Status,String> colecaoStatus;
+        @FXML private TableColumn<Status,Number> colunaPercentual;
     
     private List<Item> listaItemItem;
     private ObservableList<Item> observableListItemItem;
@@ -84,6 +85,7 @@ public class EstatisticasController implements Initializable {
         totalPorStatus.setCellValueFactory(new PropertyValueFactory<>("TotalPorStatus"));
         statusStatus.setCellValueFactory(new PropertyValueFactory<>("Status"));
         colecaoStatus.setCellValueFactory(new PropertyValueFactory<>("Colecao"));
+        colunaPercentual.setCellValueFactory(new PropertyValueFactory<>("PorcentagemStatus"));
         
         try {
             ItemDaoJDBC dao = DaoFactory.novoItemDao();

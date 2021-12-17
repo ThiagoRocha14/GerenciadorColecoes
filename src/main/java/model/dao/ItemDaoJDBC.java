@@ -76,7 +76,7 @@ public class ItemDaoJDBC implements InterfaceDao<Item> {
         while (rs.next()) {
             Item item = new Item();
             item.setId(rs.getInt("id_item"));
-            ImageView imgview = new ImageView(new Image(rs.getString("caminho_foto")));
+            ImageView imgview = new ImageView(new Image("file:"+rs.getString("caminho_foto")));
             imgview.setFitHeight(60);
             imgview.setPreserveRatio(true);
             item.setFoto(imgview);
@@ -122,22 +122,27 @@ public class ItemDaoJDBC implements InterfaceDao<Item> {
     }
 
     public List<Item> listarFiltroStatus() throws Exception {
-        PreparedStatement ps = conn.prepareStatement("SELECT COUNT(status) as totalStatus, status FROM Item GROUP BY status");
+        PreparedStatement ps = conn.prepareStatement("SELECT COUNT(status) as totalStatus, status,(COUNT(status) / (SELECT COUNT(status) FROM Item )) * 100 AS porcentagem FROM Item GROUP BY status");
         ResultSet rs = ps.executeQuery();
         List<Item> lista = new ArrayList();
         while (rs.next()) {
             Item item = new Item();
             item.setStatus(rs.getString("status"));
             item.setTotalPorStatus(rs.getInt("totalStatus"));
-            item.setColecao("Coleção não filtrada");
+            item.setColecao("Todas as coleções");
+            item.setPorcentagemStatus(rs.getFloat("porcentagem"));
             lista.add(item);            
         }
         return lista;
     }
 
     public List<Item> listarFiltroStatus(String colecao) throws Exception {
-        PreparedStatement ps = conn.prepareStatement("SELECT COUNT(status) as totalStatus, status, colecao FROM Item where colecao = ? GROUP BY status");
+        PreparedStatement ps = conn.prepareStatement(" SELECT COUNT(status) as totalStatus, status, colecao, " +
+                                                     " (COUNT(status) / (SELECT COUNT(status) FROM Item where colecao = ?)) * 100 AS porcentagem " +
+                                                     " FROM Item where colecao = ? " +
+                                                     " GROUP BY status");
         ps.setString(1, colecao);
+        ps.setString(2, colecao);
         ResultSet rs = ps.executeQuery();
         List<Item> lista = new ArrayList();
         while (rs.next()) {
@@ -145,6 +150,7 @@ public class ItemDaoJDBC implements InterfaceDao<Item> {
             item.setColecao(rs.getString("colecao"));
             item.setStatus(rs.getString("status"));
             item.setTotalPorStatus(rs.getInt("totalStatus"));
+            item.setPorcentagemStatus(rs.getFloat("porcentagem"));
             lista.add(item);            
         }
         return lista;

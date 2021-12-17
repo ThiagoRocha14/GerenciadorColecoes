@@ -13,11 +13,9 @@ public class Colecao {
     
     private String id;
     private String descricao;
-    private int totalItensColecao;
 
     public Colecao(String descricao, int totalItensColecao) {
         this.descricao = descricao;
-        this.totalItensColecao = totalItensColecao;
     }
 
     public Colecao() {
@@ -38,13 +36,5 @@ public class Colecao {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
         setId(descricao);
-    }
-
-    public int getTotalItensColecao() {
-        return totalItensColecao;
-    }
-
-    public void setTotalItensColecao(int totalItensColecao) {
-        this.totalItensColecao = totalItensColecao;
     }
 }

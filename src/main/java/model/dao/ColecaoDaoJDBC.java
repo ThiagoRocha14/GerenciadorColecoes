@@ -27,10 +27,9 @@ public class ColecaoDaoJDBC implements InterfaceDao<Colecao> {
 
     @Override
     public void incluir(Colecao entidade) throws Exception {
-        PreparedStatement ps = conn.prepareStatement("INSERT INTO Colecao (id_colecao, descricao,total_itens_colecao) VALUES (?, ?, ?)");
+        PreparedStatement ps = conn.prepareStatement("INSERT INTO Colecao (id_colecao, descricao) VALUES (?, ?)");
         ps.setString(1, entidade.getId());
         ps.setString(2, entidade.getDescricao());
-        ps.setInt(3, entidade.getTotalItensColecao());
         ps.execute();
     }
 
@@ -62,7 +61,6 @@ public class ColecaoDaoJDBC implements InterfaceDao<Colecao> {
         while (rs.next()){
            Colecao c = new Colecao();
            c.setDescricao(rs.getString("descricao"));
-           c.setTotalItensColecao(rs.getInt("total_itens_colecao"));
            lista.add(c);
         }
         return lista;

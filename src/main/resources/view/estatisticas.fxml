@@ -21,7 +21,7 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView fx:id="tableEstatisticaItem" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
+                        <TableView fx:id="tableEstatisticaItem" nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
                           <columns>
                             <TableColumn fx:id="itemItem" prefWidth="200.0" text="Item" />
                             <TableColumn fx:id="statusItem" prefWidth="164.0" text="Status" />
@@ -38,9 +38,10 @@
                      <children>
                         <TableView fx:id="tableEstatisticaStatus" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
                            <columns>
-                              <TableColumn fx:id="statusStatus" prefWidth="158.0" text="Status" />
-                              <TableColumn fx:id="totalPorStatus" prefWidth="187.0" text="Total de itens" />
-                              <TableColumn fx:id="colecaoStatus" prefWidth="226.0" text="Coleção" />
+                              <TableColumn fx:id="statusStatus" prefWidth="134.0" text="Status" />
+                              <TableColumn fx:id="totalPorStatus" prefWidth="150.0" text="Total de itens" />
+                              <TableColumn fx:id="colecaoStatus" prefWidth="146.0" text="Coleção" />
+                              <TableColumn fx:id="colunaPercentual" prefWidth="141.0" text="Percentual" />
                            </columns>
                         </TableView>
                      </children>

@@ -15,7 +15,6 @@ import model.dao.StatusDaoJDBC;
 public class CadastrosController {
     @FXML private TextArea inputDescricaoStatus;
     @FXML private TextArea txtDescricaoColecao;
-    @FXML private TextField txtTotal;
     
     @FXML
     private void switchToPrimary() throws IOException {
@@ -41,10 +40,7 @@ public class CadastrosController {
         Colecao colecao = new Colecao();   
         String descricao = txtDescricaoColecao.getText();
         txtDescricaoColecao.setText("");
-        Integer total = Integer.parseInt(txtTotal.getText());
-        txtTotal.setText("");
         colecao.setDescricao(descricao);
-        colecao.setTotalItensColecao(total);
         try{
             ColecaoDaoJDBC dao = DaoFactory.novoColecaoDao();
             dao.incluir(colecao);

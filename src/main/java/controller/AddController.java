@@ -7,7 +7,9 @@ package controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
 import java.net.URL;
+import java.nio.file.Path;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -45,6 +47,8 @@ public class AddController implements Initializable{
     @FXML private TextField txtDescAdd;
     @FXML private DatePicker pickerDataAquisicao;
     
+    private String caminhorelativoString;
+    
     @FXML
     private void switchToPrimary() throws IOException {
         App.setRoot("index"); 
@@ -54,8 +58,12 @@ public class AddController implements Initializable{
     private void selecionarImagem() throws IOException, Exception {
         FileChooser fileChooser = new FileChooser();
         File file = fileChooser.showOpenDialog(null);
+        Path caminho = file.toPath();
+        Path projeto = new File(System.getProperty("user.dir")).toPath();
+        Path caminhorelativo = projeto.relativize(caminho);
+        caminhorelativoString = caminhorelativo.toString();
         if (file != null) {
-            Image image = new Image(file.toURI().toString());
+            Image image = new Image("file:"+caminhorelativoString);
             imgView.setImage(image);
         }
     }
@@ -98,12 +106,11 @@ public class AddController implements Initializable{
     @FXML
     private void cadastrarItem(ActionEvent event) throws Exception {
         Item item = new Item();
-        String path = imgView.getImage().getUrl();
         String colecaoDescricao = selectColecao.getValue().toString();
         String statusDescricao = selectStatus.getValue().toString();
         String descricaoItem = txtDescAdd.getText();
         LocalDate dataAquisicao = pickerDataAquisicao.getValue();
-        item.setCaminhoFoto(path);
+        item.setCaminhoFoto(caminhorelativoString);
         item.setColecao(colecaoDescricao);
         item.setDescricao(descricaoItem);
         item.setStatus(statusDescricao);
