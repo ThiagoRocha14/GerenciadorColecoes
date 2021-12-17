@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,6 +18,9 @@ import model.Item;
 import model.dao.DaoFactory;
 import model.dao.ItemDaoJDBC;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.image.ImageView;
 
 public class ListController implements Initializable {
 
@@ -40,6 +44,25 @@ public class ListController implements Initializable {
         App.setRoot("add");
     }
     
+    @FXML
+    private void btnExcluir() throws IOException, Exception {
+        Item itemselecionado = tabelaItens.selectionModelProperty().getValue().getSelectedItem();
+        ItemDaoJDBC dao = DaoFactory.novoItemDao();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Aviso");
+        alert.setContentText("Deseja excluir o item selecionado?");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+        
+        }
+    }
+    
+    @FXML
+    private void btnEditar() throws IOException {
+        
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         carregarItens();
@@ -50,6 +73,7 @@ public class ListController implements Initializable {
         //Ele tá pegando a quantidade certa dos itens, o problema tá sendo na hora de exibir
         //Você pode testar que a quantidade de itens que você colocar vai aparecer na tabela clicável, mas não visível
         //A gente pode usar uma propriedade Callback tbm, tem sobre no StackOverflow
+        
         colunaImagem.setCellValueFactory(new PropertyValueFactory<>("Imagem"));
         colunaDescricao.setCellValueFactory(new PropertyValueFactory<>("Descricao"));
         colunaStatus.setCellValueFactory(new PropertyValueFactory<>("Status"));
