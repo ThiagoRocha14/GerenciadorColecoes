@@ -33,7 +33,6 @@ public class ListController implements Initializable {
     
     private List<Item> listaItem;
     private ObservableList<Item> observableListItem;
- 
     
     @FXML
     private void switchToPrimary() throws IOException {        
@@ -54,13 +53,25 @@ public class ListController implements Initializable {
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.get() == ButtonType.OK){
-        
+           String mensagem = "";
+           try {
+               dao.excluir(itemselecionado);
+           }catch(Exception E){
+               mensagem = "Ocorreu um erro "+ E.getMessage();
+               Alert alertErro = new Alert(Alert.AlertType.INFORMATION);
+               alertErro.setTitle("Erro");
+               alertErro.setContentText(mensagem);
+               alertErro.showAndWait();
+           }   
         }
+        carregarItens();
     }
     
     @FXML
-    private void btnEditar() throws IOException {
-        
+    private void btnEditar() throws IOException, Exception {
+        Item itemselecionado = tabelaItens.selectionModelProperty().getValue().getSelectedItem();
+        AddController.setItemSelecionado(itemselecionado);
+        App.setRoot("add");
     }
     
     @Override
