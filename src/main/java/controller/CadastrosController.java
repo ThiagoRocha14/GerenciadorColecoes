@@ -4,6 +4,7 @@ import start.App;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import model.Colecao;
@@ -26,7 +27,17 @@ public class CadastrosController {
         Status status = new Status();
         String descricao = inputDescricaoStatus.getText();
         inputDescricaoStatus.setText("");
-        status.setDescricao(descricao);
+        
+        if(!descricao.equals(""))
+            status.setDescricao(descricao);
+        else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aviso");
+            alert.setContentText("O campo descrição é obrigatório");
+            alert.showAndWait();
+            return;
+        }
+        
         try{
             StatusDaoJDBC dao = DaoFactory.novoStatusDao();
             dao.incluir(status);
@@ -41,6 +52,15 @@ public class CadastrosController {
         String descricao = txtDescricaoColecao.getText();
         txtDescricaoColecao.setText("");
         colecao.setDescricao(descricao);
+        if(!descricao.equals(""))
+            colecao.setDescricao(descricao);
+        else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aviso");
+            alert.setContentText("O campo descrição é obrigatório");
+            alert.showAndWait();
+            return;
+        }
         try{
             ColecaoDaoJDBC dao = DaoFactory.novoColecaoDao();
             dao.incluir(colecao);
